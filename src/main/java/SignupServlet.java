@@ -15,6 +15,7 @@ public class SignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Display signup form
+        response.sendRedirect("signup.jsp");
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.println("<html><body>");

@@ -9,7 +9,7 @@ public class DBHelper {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String url = "jdbc:mysql://localhost:3306/train_reservation_system";
             String username = "root";
-            String password = "senthil8"; // Change Password
+            String password = "password"; // Change Password
             System.out.println("Attempting database connection...");
             Connection conn = DriverManager.getConnection(url, username, password);
             System.out.println("Database connection successful!");

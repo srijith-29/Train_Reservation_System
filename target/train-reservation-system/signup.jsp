@@ -7,16 +7,6 @@
     <title>Signup</title>
 </head>
 <body>
-    <%
-    String errorMessage = (String) request.getAttribute("errorMessage");
-    if (errorMessage != null) {
-    %>
-    <script>
-        alert("<%= errorMessage %>");
-    </script>
-    <%
-    }
-    %>
 
     <div class="signup-container">
         <h2>Signup</h2>

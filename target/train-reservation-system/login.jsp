@@ -9,7 +9,7 @@
     <title>Login</title>
 </head>
 <body>
-    <%
+    <!-- <%
     String errorMessage = (String) request.getAttribute("errorMessage");
     if (errorMessage != null) {
     %>
@@ -18,7 +18,13 @@
     </script>
     <%
     }
-    %>
+    %> -->
+
+    <% if(request.getAttribute("errorMessage") != null) { %>
+        <div class="error">
+            <%= request.getAttribute("errorMessage") %>
+        </div>
+    <% } %>
 
     <div class="login-container">
         <h2>Login</h2>

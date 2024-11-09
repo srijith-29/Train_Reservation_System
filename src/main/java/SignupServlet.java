@@ -5,6 +5,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -31,29 +32,44 @@ public class SignupServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
-    
+
         // Basic validation
         if (!password.equals(confirmPassword)) {
-            response.sendRedirect("signup?error=Passwords do not match");
+            request.setAttribute("errorMessage", "Passwords do not match");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
             return;
         }
-    
-        try {
-            String hashedPassword = hashPassword(password);
-            try (Connection conn = DBHelper.getConnection()) {
-                String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-                try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                    stmt.setString(1, username);
-                    stmt.setString(2, hashedPassword);
-                    stmt.executeUpdate();
-                    // Store username in session
-                    request.getSession().setAttribute("username", username);
-                    response.sendRedirect("success.jsp");
+
+        try (Connection conn = DBHelper.getConnection()) {
+            // First check if username exists
+            String checkSql = "SELECT COUNT(*) FROM users WHERE username = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+                checkStmt.setString(1, username);
+                ResultSet rs = checkStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) > 0) {
+                    // Username exists
+                    request.setAttribute("errorMessage", "Username already exists. Please choose a different username.");
+                    request.getRequestDispatcher("signup.jsp").forward(request, response);
+                    return;
                 }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             }
+
+            // If we get here, username is available, proceed with insertion
+            String hashedPassword = hashPassword(password);
+            String insertSql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
+                insertStmt.setString(1, username);
+                insertStmt.setString(2, hashedPassword);
+                insertStmt.executeUpdate();
+                
+                // Store username in session
+                request.getSession().setAttribute("username", username);
+                response.sendRedirect("success.jsp");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("errorMessage", "An error occurred during registration. Please try again.");
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

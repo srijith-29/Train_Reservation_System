@@ -8,7 +8,7 @@
             },
             "previewLimit": 50,
             "server": "localhost",
-            "port": 3306,
+            "port": 33060,
             "driver": "MySQL",
             "name": "MySQL Local",
             "database": "train_reservation_system",

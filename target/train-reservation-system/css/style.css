@@ -87,3 +87,32 @@ input[type="submit"]:hover {
 .signup-link:hover {
     text-decoration: underline;
 }
+
+.login-container .show-password-container {
+    position: relative;
+    margin-top: 0.5rem;
+}
+
+.login-container .show-password-container button {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: 0.8rem;
+    transform: translateY(-50%);
+    transition: color 0.2s ease;
+}
+
+.login-container .show-password-container button:hover {
+    color: #0056b3;
+}
+
+.login-container .show-password-container button:focus {
+    outline: none;
+}
+

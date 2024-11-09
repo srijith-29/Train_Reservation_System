@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/train-reservation-system/css/style.css">
     <title>Login</title>
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById("password");
+            var toggleButton = document.getElementById("toggle-password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleButton.innerHTML = "Hide Password";
+            } else {
+                passwordField.type = "password";
+                toggleButton.innerHTML = "Show Password";
+            }
+        }
+    </script>
 </head>
+
 <body>
     <% if(request.getAttribute("errorMessage") != null) { %>
         <div class="error">
@@ -25,10 +38,14 @@
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
+                <div class="show-password-container">
+                    <button type="button" id="toggle-password" onclick="togglePassword()">Show Password</button>
+                </div>
             </div>
             <input type="submit" value="Login">
         </form>
         <a href="signup.jsp" class="signup-link">Don't have an account? Sign up</a>
     </div>
 </body>
+
 </html>

@@ -51,6 +51,8 @@ public class LoginServlet extends HttpServlet {
                             response.sendRedirect("admin-dashboard.jsp");
                         } else if ("user".equalsIgnoreCase(role)) {
                             response.sendRedirect("success.jsp");
+                        } else if ("cusrep".equalsIgnoreCase(role)) {
+                            response.sendRedirect("cusrep-dashboard.jsp");
                         } else {
                             // Unknown role
                             request.setAttribute("errorMessage", "Invalid user role.");

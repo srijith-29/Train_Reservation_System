@@ -57,10 +57,14 @@ public class SignupServlet extends HttpServlet {
 
             // If we get here, username is available, proceed with insertion
             String hashedPassword = hashPassword(password);
-            String insertSql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            // String insertSql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            // Modify this SQL statement to include the role column
+            String insertSql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+
             try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
                 insertStmt.setString(1, username);
                 insertStmt.setString(2, hashedPassword);
+                insertStmt.setString(3, "user"); // Set role
                 insertStmt.executeUpdate();
                 
                 // Store username in session

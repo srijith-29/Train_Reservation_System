@@ -39,17 +39,28 @@ public class LoginServlet extends HttpServlet {
                     stmt.setString(1, username);
                     stmt.setString(2, hashedPassword);
                     ResultSet rs = stmt.executeQuery();
+                    
                     if (rs.next()) {
-                        // Store username in session
+                        String role = rs.getString("role");
+                        // Store username and role in session
                         request.getSession().setAttribute("username", username);
-                        // Redirect to success page
-                        response.sendRedirect("success.jsp");
+                        request.getSession().setAttribute("role", role);
+    
+                        // Redirect based on role
+                        if ("admin".equalsIgnoreCase(role)) {
+                            response.sendRedirect("admin-dashboard.jsp");
+                        } else if ("user".equalsIgnoreCase(role)) {
+                            response.sendRedirect("success.jsp");
+                        } else {
+                            // Unknown role
+                            request.setAttribute("errorMessage", "Invalid user role.");
+                            request.getRequestDispatcher("login.jsp").forward(request, response);
+                        }
                     } else {
                         // Invalid credentials
                         request.setAttribute("errorMessage", "Invalid credentials");
                         request.getRequestDispatcher("login.jsp").forward(request, response);
                     }
-                    
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -60,6 +71,7 @@ public class LoginServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
+    
 
     private String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");

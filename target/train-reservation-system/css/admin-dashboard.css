@@ -93,3 +93,73 @@ button:hover {
         font-size: 2em;
     }
 }
+
+/* Style for the dropdown container */
+.dropdown {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Position at the top-right corner */
+    display: inline-block;
+}
+
+/* Style for the dropdown button */
+.dropdown button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown button:hover {
+    background-color: #45a049;
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Align dropdown content below the button */
+    right: 0; /* Align with the right edge of the button */
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Links inside dropdown */
+.dropdown-content a,
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    background: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    font: inherit;
+}
+
+/* Hover effects for both links and the button */
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Additional styling for the logout button */
+.logout-form {
+    margin: 0;
+    padding: 0;
+    display: block;
+}

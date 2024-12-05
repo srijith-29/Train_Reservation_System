@@ -31,6 +31,16 @@
     <title>Admin Dashboard</title>
 </head>
 <body>
+    <div class="dropdown">
+        <button>Menu</button>
+        <div class="dropdown-content">
+            <a href="reservation-data">Reservation Data</a>
+            <a href="sales-report">Sales Report</a>
+            <form action="logout" method="post" class="logout-form">
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
     <h1>Admin Dashboard</h1>
     <table border="1">
         <thead>

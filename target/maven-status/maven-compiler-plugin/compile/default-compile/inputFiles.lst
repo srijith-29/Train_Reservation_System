@@ -1,4 +1,7 @@
 /Users/srijithsenthil/Documents/train-reservation-system/src/main/java/DBHelper.java
 /Users/srijithsenthil/Documents/train-reservation-system/src/main/java/LoginServlet.java
 /Users/srijithsenthil/Documents/train-reservation-system/src/main/java/LogoutServlet.java
+/Users/srijithsenthil/Documents/train-reservation-system/src/main/java/AdminDashboardServlet.java
+/Users/srijithsenthil/Documents/train-reservation-system/src/main/java/EditUserServlet.java
+/Users/srijithsenthil/Documents/train-reservation-system/src/main/java/DeleteUserServlet.java
 /Users/srijithsenthil/Documents/train-reservation-system/src/main/java/SignupServlet.java

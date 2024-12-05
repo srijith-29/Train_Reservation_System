@@ -1,4 +1,7 @@
 LogoutServlet.class
 DBHelper.class
-SignupServlet.class
 LoginServlet.class
+AdminDashboardServlet.class
+EditUserServlet.class
+DeleteUserServlet.class
+SignupServlet.class

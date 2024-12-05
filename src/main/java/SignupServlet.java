@@ -14,23 +14,14 @@ import java.nio.charset.StandardCharsets;
 public class SignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Display signup form
         response.sendRedirect("signup.jsp");
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<html><body>");
-        out.println("<h2>Signup Page</h2>");
-        out.println("<form action='signup' method='POST'>");
-        out.println("Username: <input type='text' name='username'><br>");
-        out.println("Password: <input type='password' name='password'><br>");
-        out.println("Confirm Password: <input type='password' name='confirmPassword'><br>");
-        out.println("<input type='submit' value='Signup'>");
-        out.println("</form>");
-        out.println("</body></html>");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
@@ -42,31 +33,30 @@ public class SignupServlet extends HttpServlet {
         }
 
         try (Connection conn = DBHelper.getConnection()) {
-            // First check if username exists
+            // Check if username exists
             String checkSql = "SELECT COUNT(*) FROM users WHERE username = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
                 checkStmt.setString(1, username);
                 ResultSet rs = checkStmt.executeQuery();
                 if (rs.next() && rs.getInt(1) > 0) {
-                    // Username exists
                     request.setAttribute("errorMessage", "Username already exists. Please choose a different username.");
                     request.getRequestDispatcher("signup.jsp").forward(request, response);
                     return;
                 }
             }
 
-            // If we get here, username is available, proceed with insertion
+            // Insert new user into the database
             String hashedPassword = hashPassword(password);
-            // String insertSql = "INSERT INTO users (username, password) VALUES (?, ?)";
-            // Modify this SQL statement to include the role column
-            String insertSql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
-
+            String insertSql = "INSERT INTO users (username, email, first_name, last_name, password, role) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement insertStmt = conn.prepareStatement(insertSql)) {
                 insertStmt.setString(1, username);
-                insertStmt.setString(2, hashedPassword);
-                insertStmt.setString(3, "user"); // Set role
+                insertStmt.setString(2, email);
+                insertStmt.setString(3, firstName);
+                insertStmt.setString(4, lastName);
+                insertStmt.setString(5, hashedPassword);
+                insertStmt.setString(6, "user"); // Default role
                 insertStmt.executeUpdate();
-                
+
                 // Store username in session
                 request.getSession().setAttribute("username", username);
                 response.sendRedirect("success.jsp");

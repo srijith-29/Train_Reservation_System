@@ -1,4 +1,5 @@
 LogoutServlet.class
+SalesReportServlet.class
 SearchServlet.class
 DBHelper.class
 LoginServlet.class

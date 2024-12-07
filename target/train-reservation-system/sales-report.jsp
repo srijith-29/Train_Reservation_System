@@ -75,7 +75,9 @@
     <div class="dropdown">
         <button>Menu</button>
         <div class="dropdown-content">
-            <a href="reservation-data">Reservation Data</a>
+            <form action="filter-reservations.jsp" method="post" class="logout-form">
+                <button type="submit">Reservation Data</button>
+            </form>
             <form action="admin-dashboard.jsp" method="post" class="logout-form">
                 <button type="submit">Admin Dashboard</button>
             </form>

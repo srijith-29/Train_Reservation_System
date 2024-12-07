@@ -85,4 +85,13 @@
         <url-pattern>/salesreport</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FilterReservationsServlet</servlet-name>
+        <servlet-class>FilterReservationsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FilterReservationsServlet</servlet-name>
+        <url-pattern>/filterreservation</url-pattern>
+    </servlet-mapping>
+
 </web-app>

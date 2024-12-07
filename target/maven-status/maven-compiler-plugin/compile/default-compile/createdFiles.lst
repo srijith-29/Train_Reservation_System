@@ -5,6 +5,7 @@ DBHelper.class
 LoginServlet.class
 AdminDashboardServlet.class
 EditUserServlet.class
+FilterReservationsServlet.class
 DeleteUserServlet.class
 BrowseServlet.class
 SignupServlet.class

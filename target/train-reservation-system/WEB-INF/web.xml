@@ -94,4 +94,13 @@
         <url-pattern>/filterreservation</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RevenueServlet</servlet-name>
+        <servlet-class>RevenueServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RevenueServlet</servlet-name>
+        <url-pattern>/RevenueServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -40,9 +40,13 @@
             <form action="sales-report.jsp" method="post" class="logout-form">
                 <button type="submit">Sales Report</button>
             </form>
+            <form action="revenue.jsp" method="post" class="logout-form">
+                <button type="submit">Revenue Filter</button>
+            </form>
             <form action="logout" method="post" class="logout-form">
                 <button type="submit">Logout</button>
             </form>
+
         </div>
     </div>
     <h1>Admin Dashboard</h1>

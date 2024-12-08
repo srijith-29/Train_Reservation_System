@@ -33,7 +33,7 @@ public class SalesReportServlet extends HttpServlet {
         }
 
         // SQL query to get reservation data for the selected month and year
-        String sql = "SELECT Reservation_ID, Username, Passenger_ID, Outbound_Schedule_ID, Return_Schedule_ID, Total_Fare, Reservation_Date, Travel_Date " +
+        String sql = "SELECT Reservation_ID, Username, Outbound_Schedule_ID, Return_Schedule_ID, Total_Fare, Reservation_Date, Travel_Date " +
                     "FROM Reservation " +
                     "WHERE MONTH(Reservation_Date) = ? AND YEAR(Reservation_Date) = ?";
 
@@ -48,7 +48,6 @@ public class SalesReportServlet extends HttpServlet {
                 Map<String, Object> reservation = new HashMap<>();
                 reservation.put("reservationId", rs.getInt("Reservation_ID"));
                 reservation.put("username", rs.getString("Username"));
-                reservation.put("passengerId", rs.getInt("Passenger_ID"));
                 reservation.put("outboundScheduleId", rs.getInt("Outbound_Schedule_ID"));
                 reservation.put("returnScheduleId", rs.getObject("Return_Schedule_ID"));
                 reservation.put("totalFare", rs.getDouble("Total_Fare"));

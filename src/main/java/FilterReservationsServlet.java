@@ -26,7 +26,7 @@ public class FilterReservationsServlet extends HttpServlet {
         List<Map<String, Object>> reservations = new ArrayList<>();
 
         // SQL query to get reservation data for the selected username and transit line
-        String sql = "SELECT r.Reservation_ID, r.Username, r.Passenger_ID, r.Outbound_Schedule_ID, r.Return_Schedule_ID, r.Total_Fare, r.Reservation_Date, r.Travel_Date " +
+        String sql = "SELECT r.Reservation_ID, r.Username, r.Outbound_Schedule_ID, r.Return_Schedule_ID, r.Total_Fare, r.Reservation_Date, r.Travel_Date " +
                     "FROM Reservation r " +
                     "LEFT JOIN Schedule s ON r.Outbound_Schedule_ID = s.Schedule_ID " +
                     "LEFT JOIN Schedule rs ON r.Return_Schedule_ID = rs.Schedule_ID " +
@@ -63,7 +63,6 @@ public class FilterReservationsServlet extends HttpServlet {
                 Map<String, Object> reservation = new HashMap<>();
                 reservation.put("reservationId", rs.getInt("Reservation_ID"));
                 reservation.put("username", rs.getString("Username"));
-                reservation.put("passengerId", rs.getInt("Passenger_ID"));
                 reservation.put("outboundScheduleId", rs.getInt("Outbound_Schedule_ID"));
                 reservation.put("returnScheduleId", rs.getObject("Return_Schedule_ID"));
                 reservation.put("totalFare", rs.getDouble("Total_Fare"));

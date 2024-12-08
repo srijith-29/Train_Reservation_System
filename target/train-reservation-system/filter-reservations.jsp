@@ -91,7 +91,6 @@
                 <tr>
                     <th onclick="sortTable(0, 'number')">Reservation ID</th>
                     <th onclick="sortTable(1, 'string')">Username</th>
-                    <th onclick="sortTable(2, 'number')">Passenger ID</th>
                     <th onclick="sortTable(3, 'number')">Outbound Schedule ID</th>
                     <th onclick="sortTable(4, 'number')">Return Schedule ID</th>
                     <th onclick="sortTable(5, 'number')">Total Fare</th>
@@ -104,7 +103,6 @@
                     <tr>
                         <td><%= reservation.get("reservationId") %></td>
                         <td><%= reservation.get("username") %></td>
-                        <td><%= reservation.get("passengerId") %></td>
                         <td><%= reservation.get("outboundScheduleId") %></td>
                         <td><%= reservation.get("returnScheduleId") != null ? reservation.get("returnScheduleId") : "N/A" %></td>
                         <td><%= reservation.get("totalFare") %></td>

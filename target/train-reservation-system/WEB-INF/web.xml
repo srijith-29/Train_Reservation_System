@@ -112,4 +112,32 @@
         <url-pattern>/reservationdata</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ListQuestionsServlet</servlet-name>
+        <servlet-class>ListQuestionsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListQuestionsServlet</servlet-name>
+        <url-pattern>/ListQuestionsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewAnswersServlet</servlet-name>
+        <servlet-class>ViewAnswersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewAnswersServlet</servlet-name>
+        <url-pattern>/ViewAnswersServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SubmitQuestionServlet</servlet-name>
+        <servlet-class>SubmitQuestionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SubmitQuestionServlet</servlet-name>
+        <url-pattern>/SubmitQuestionServlet</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

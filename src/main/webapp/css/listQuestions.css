@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f4f4f4;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    color: #333;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+input[type="submit"], button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #4cae4c;
+}
+
+.questions-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.question-item {
+    background-color: #fafafa;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question-item strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.question-item p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.question-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.question-item a:hover {
+    text-decoration: underline;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.search-bar input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ddd;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #5bc0de;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #31b0d5;
+}
+
+.no-questions {
+    font-size: 1.2rem;
+    color: #888;
+    text-align: center;
+}
+
+/* General button styling */
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Search button (no specific positioning, default styling) */
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Hover effect for the search button */
+button[type="submit"]:hover {
+    background-color: #28a745;
+}
+
+/* Back button styling (top right position) */
+.back-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the back button */
+.back-button:hover {
+    background-color: #218838;
+}
+

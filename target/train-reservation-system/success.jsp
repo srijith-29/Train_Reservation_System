@@ -30,6 +30,9 @@
         <div class="form-group">
             <a href="view_reservations.jsp" class="signup-link">View Your Reservations</a>
         </div>
+        <div class="form-group">
+            <a href="ListQuestionsServlet" class="signup-link">Questions & Answsers</a>
+        </div>
     </div>
 </body>
 </html>

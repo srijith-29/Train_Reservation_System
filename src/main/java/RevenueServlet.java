@@ -9,10 +9,19 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/RevenueServlet")
 public class RevenueServlet extends HttpServlet {
+
+    
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String role = (String) request.getSession().getAttribute("role");
+        if (role == null || !"admin".equalsIgnoreCase(role)) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+        
         String transitLine = request.getParameter("transitLine");
         String username = request.getParameter("username");
 

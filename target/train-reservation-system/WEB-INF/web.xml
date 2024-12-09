@@ -103,4 +103,13 @@
         <url-pattern>/RevenueServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ReservationData</servlet-name>
+        <servlet-class>ReservationData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReservationData</servlet-name>
+        <url-pattern>/reservationdata</url-pattern>
+    </servlet-mapping>
+
 </web-app>

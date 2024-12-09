@@ -1,12 +1,13 @@
 LogoutServlet.class
 RevenueServlet.class
-SalesReportServlet.class
 SearchServlet.class
 DBHelper.class
 LoginServlet.class
+SignupServlet.class
+SalesReportServlet.class
+ReservationData.class
 AdminDashboardServlet.class
 EditUserServlet.class
 FilterReservationsServlet.class
 DeleteUserServlet.class
 BrowseServlet.class
-SignupServlet.class

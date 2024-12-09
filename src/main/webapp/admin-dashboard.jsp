@@ -34,11 +34,17 @@
     <div class="dropdown">
         <button>Menu</button>
         <div class="dropdown-content">
+            <form action="admin-dashboard.jsp" method="post" class="logout-form">
+                <button type="submit">Admin Dashboard</button>
+            </form>
             <form action="filter-reservations.jsp" method="post" class="logout-form">
                 <button type="submit">Filter Reservation</button>
             </form>
             <form action="sales-report.jsp" method="post" class="logout-form">
                 <button type="submit">Sales Report</button>
+            </form>
+            <form action="reservationdata" method="get" class="logout-form">
+                <button type="submit">Reservation Data</button>
             </form>
             <form action="revenue.jsp" method="post" class="logout-form">
                 <button type="submit">Revenue Filter</button>

@@ -22,13 +22,10 @@
             <input type="submit" value="Logout">
         </form>
         <div class="form-group">
-            <a href="browse" class="signup-link">Search for Train Schedules</a>
+            <a href="browse" class="signup-link">Make a Reservation</a>
         </div>
         <div class="form-group">
-            <a href="reservation.jsp" class="signup-link">Make a Reservation</a>
-        </div>
-        <div class="form-group">
-            <a href="view_reservations.jsp" class="signup-link">View Your Reservations</a>
+            <a href="ManageReservations" class="signup-link">Manage Your Reservations</a>
         </div>
         <div class="form-group">
             <a href="ListQuestionsServlet" class="signup-link">Questions & Answsers</a>

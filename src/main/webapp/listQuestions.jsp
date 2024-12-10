@@ -32,6 +32,7 @@
     <!-- Display questions -->
     <%
         List<Map<String, Object>> questions = (List<Map<String, Object>>) request.getAttribute("questions");
+        String role = (String) session.getAttribute("role");
         if (questions != null && !questions.isEmpty()) {
     %>
         <ul>
@@ -43,6 +44,19 @@
                     Asked by <%= question.get("username") %> on <%= question.get("createdAt") %><br>
                     <p><%= question.get("body") %></p>
                     <a href="ViewAnswersServlet?questionID=<%= question.get("questionID") %>">View Answers</a>
+                    
+                    <!-- Reply form (only visible to cusrep role) -->
+                    <%
+                        if ("cusrep".equals(role)) {
+                    %>
+                        <form action="SubmitQuestionServlet" method="POST" style="margin-top: 10px;">
+                            <input type="hidden" name="questionID" value="<%= question.get("questionID") %>" />
+                            <textarea name="replyBody" rows="2" cols="50" placeholder="Write your reply here..." required></textarea><br>
+                            <button type="submit">Submit Reply</button>
+                        </form>
+                    <%
+                        }
+                    %>
                 </li>
             <%
                 }

@@ -43,6 +43,28 @@
         .back-link:hover {
             background-color: #0056b3;
         }
+
+        .proceed-link {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: #2dc450;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .proceed-link:hover {
+            background-color: #1d8135;
+        }
+
+        .heading-note {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-size: 16px;
+            color: #555;
+            font-style: italic;
+        }
     </style>
     <script>
         let selectedOutbound = null;
@@ -185,7 +207,9 @@
 <body>
     <div class="search-results-container">
         <h2>Round Trip Schedules</h2>
-
+        <div class="heading-note">
+            Click on the column headings to sort results by the selected <strong>criteria</strong>.
+        </div>
         <h3>Outbound Schedules</h3>
         <table class="results-table">
             <thead>
@@ -222,7 +246,7 @@
             <input type="hidden" id="returnScheduleId" name="returnScheduleId">
             <input type="hidden" id="returnFare" name="returnFare">
             <input type="hidden" id="totalFare" name="totalFare">
-            <button type="button" onclick="submitSelection()">Proceed to Reservation</button>
+            <button type="button" class="proceed-link" onclick="submitSelection()">Proceed to Reservation</button>
         </form>
 
         <!-- Back to Browse Link -->

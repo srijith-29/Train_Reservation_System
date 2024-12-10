@@ -222,16 +222,45 @@
             passengerBody.style.display = isVisible ? "none" : "block";
         }
 
-        function serializePassengerData() {
+        function serializePassengerData(event) {
             const passengers = [];
+            const errorMessage = document.getElementById("error-message");
+            errorMessage.style.display = "none"; // Hide error message initially
+            errorMessage.textContent = ""; // Clear previous messages
+
             document.querySelectorAll('.passenger').forEach(passenger => {
-                const firstName = passenger.querySelector('input[name*="[firstName]"]').value;
-                const lastName = passenger.querySelector('input[name*="[lastName]"]').value;
-                const age = passenger.querySelector('input[name*="[age]"]').value;
-                const category = passenger.querySelector('select[name*="[category]"]').value;
+                const firstName = passenger.querySelector('input[name*="[firstName]"]').value.trim();
+                const lastName = passenger.querySelector('input[name*="[lastName]"]').value.trim();
+                const age = passenger.querySelector('input[name*="[age]"]').value.trim();
+                const category = passenger.querySelector('select[name*="[category]"]').value.trim();
+
+                // Validate passenger details
+                if (!firstName || !lastName || !age || !category) {
+                    event.preventDefault();
+                    errorMessage.style.display = "block";
+                    errorMessage.textContent = "All passenger details are required. Please fill out all fields.";
+                    return;
+                }
+
+                if (isNaN(age) || age <= 0) {
+                    event.preventDefault();
+                    errorMessage.style.display = "block";
+                    errorMessage.textContent = "Age must be a valid positive number.";
+                    return;
+                }
+
                 passengers.push({ firstName, lastName, age, category });
             });
 
+            // Ensure at least one passenger is added
+            if (passengers.length === 0) {
+                event.preventDefault();
+                errorMessage.style.display = "block";
+                errorMessage.textContent = "You must add at least one passenger to complete the reservation.";
+                return;
+            }
+
+            // If validation passes, add the serialized data to the form
             const serializedInput = document.createElement('input');
             serializedInput.type = 'hidden';
             serializedInput.name = 'passengerData';
@@ -291,7 +320,8 @@
 
     <div class="reservation-container form-container">
         <h2>Enter Passenger Details</h2>
-        <form id="passengerForm" action="completeRoundTripReservation" method="POST" onsubmit="serializePassengerData()">
+        <div id="error-message" style="display: none; color: red; font-weight: bold; margin-bottom: 20px;"></div>
+        <form id="passengerForm" action="completeRoundTripReservation" method="POST" onsubmit="serializePassengerData(event)">
             <input type="hidden" name="outboundScheduleId" value="<%= request.getParameter("outboundScheduleId") %>">
             <input type="hidden" name="returnScheduleId" value="<%= request.getParameter("returnScheduleId") %>">
             <input type="hidden" name="outboundDepartureDate" id="outboundDepartureDate" value="<%= request.getParameter("outboundDepartureDate") %>">

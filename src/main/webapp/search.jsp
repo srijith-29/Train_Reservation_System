@@ -4,6 +4,25 @@
 <head>
     <title>Search Results</title>
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/train-reservation-system/css/style_results.css">
+    <style>
+        .results-table tbody tr:hover {
+            cursor: pointer;
+            background-color: #f0f0f0;
+        }
+        .results-table th {
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            text-align: left;
+            padding: 10px;
+            user-select: none; /* Prevent text selection */
+            transition: background-color 0.2s;
+        }
+
+        .results-table th:hover {
+            background-color: #0056b3; /* Darker shade for hover */
+        }
+    </style>
     <script>
         // Function to populate the search results table
         function populateResultsTable(schedulesJson) {
@@ -15,7 +34,6 @@
             resultsTableBody.innerHTML = '';
 
             if (schedules.length === 0) {
-                // No results found
                 const noResultsRow = document.createElement('tr');
                 const noResultsCell = document.createElement('td');
                 noResultsCell.colSpan = 7;
@@ -23,9 +41,9 @@
                 noResultsRow.appendChild(noResultsCell);
                 resultsTableBody.appendChild(noResultsRow);
             } else {
-                // Populate rows with data
                 schedules.forEach(schedule => {
                     const row = document.createElement('tr');
+                    row.onclick = () => selectSchedule(schedule.scheduleId, schedule.fare, schedule.departureDate);
 
                     const transitLineCell = document.createElement('td');
                     transitLineCell.textContent = schedule.transitLine;
@@ -33,7 +51,7 @@
                     const trainNameCell = document.createElement('td');
                     trainNameCell.textContent = schedule.trainName;
 
-                    const departureDateCell = document.createElement('td'); // New column for departure date
+                    const departureDateCell = document.createElement('td');
                     departureDateCell.textContent = schedule.departureDate;
 
                     const departureCell = document.createElement('td');
@@ -50,7 +68,7 @@
 
                     row.appendChild(transitLineCell);
                     row.appendChild(trainNameCell);
-                    row.appendChild(departureDateCell); // Append departure date
+                    row.appendChild(departureDateCell);
                     row.appendChild(departureCell);
                     row.appendChild(arrivalCell);
                     row.appendChild(fareCell);
@@ -58,6 +76,18 @@
 
                     resultsTableBody.appendChild(row);
                 });
+            }
+        }
+
+        // Function to redirect based on trip type
+        function selectSchedule(scheduleId, fare, travelDate) {
+            const tripType = '<%= request.getParameter("tripType") %>';
+            if (tripType === 'round-trip') {
+                // Redirect to SearchServlet to fetch return schedules
+                window.location.href = `search?origin=<%= request.getParameter("destination") %>&destination=<%= request.getParameter("origin") %>&departureDate=${travelDate}&tripType=round-trip&outboundScheduleId=${scheduleId}&outboundFare=${fare}&outboundDate=${travelDate}`;
+            } else {
+                // Redirect directly to reservation details
+                window.location.href = `reservationDetails.jsp?scheduleId=${scheduleId}&fare=${fare}&travelDate=${travelDate}`;
             }
         }
 
@@ -118,7 +148,7 @@
                 <tr>
                     <th onclick="sortTable(0, 'text')">Transit Line</th>
                     <th onclick="sortTable(1, 'text')">Train Name</th>
-                    <th onclick="sortTable(2, 'text')">Departure Date</th> <!-- New column -->
+                    <th onclick="sortTable(2, 'text')">Departure Date</th>
                     <th onclick="sortTable(3, 'time')">Departure Time</th>
                     <th onclick="sortTable(4, 'time')">Arrival</th>
                     <th onclick="sortTable(5, 'number')">Fare</th>

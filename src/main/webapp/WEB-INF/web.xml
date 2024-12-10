@@ -30,7 +30,55 @@
         <servlet-name>SearchServlet</servlet-name>
         <url-pattern>/search</url-pattern>
     </servlet-mapping>
-
+    
+    <servlet>
+        <servlet-name>RoundTripSearchServlet</servlet-name>
+        <servlet-class>RoundTripSearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RoundTripSearchServlet</servlet-name>
+        <url-pattern>/roundtripSearch</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CompleteReservationServlet</servlet-name>
+        <servlet-class>CompleteReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompleteReservationServlet</servlet-name>
+        <url-pattern>/completeReservation</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CompleteRoundTripReservationServlet</servlet-name>
+        <servlet-class>CompleteRoundTripReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompleteRoundTripReservationServlet</servlet-name>
+        <url-pattern>/completeRoundTripReservation</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ManageReservationsServlet</servlet-name>
+        <servlet-class>ManageReservationsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageReservationsServlet</servlet-name>
+        <url-pattern>/ManageReservations</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CancelReservationServlet</servlet-name>
+        <servlet-class>CancelReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancelReservationServlet</servlet-name>
+        <url-pattern>/CancelReservation</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ViewReservationDetailsServlet</servlet-name>
+        <servlet-class>ViewReservationDetailsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewReservationDetailsServlet</servlet-name>
+        <url-pattern>/ViewReservationDetails</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>SignupServlet</servlet-name>
         <servlet-class>SignupServlet</servlet-class>

@@ -2,6 +2,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,10 +28,11 @@ public class LoginServlet extends HttpServlet {
         out.println("</body></html>");
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-    
+
         try {
             String hashedPassword = hashPassword(password);
             try (Connection conn = DBHelper.getConnection()) {
@@ -39,13 +41,22 @@ public class LoginServlet extends HttpServlet {
                     stmt.setString(1, username);
                     stmt.setString(2, hashedPassword);
                     ResultSet rs = stmt.executeQuery();
-                    
+
                     if (rs.next()) {
                         String role = rs.getString("role");
                         // Store username and role in session
                         request.getSession().setAttribute("username", username);
                         request.getSession().setAttribute("role", role);
-    
+
+                        // Check if there is a redirectAfterLogin attribute
+                        // String redirectAfterLogin = (String) request.getSession().getAttribute("redirectAfterLogin");
+                        // if ("reservationDetails".equals(redirectAfterLogin)) {
+                        //     // Redirect to reservation details page
+                        //     request.getSession().removeAttribute("redirectAfterLogin");
+                        //     request.getRequestDispatcher("search.jsp").forward(request, response);
+                        //     return;
+                        // }
+
                         // Redirect based on role
                         if ("admin".equalsIgnoreCase(role)) {
                             response.sendRedirect("admin-dashboard.jsp");
@@ -73,7 +84,6 @@ public class LoginServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         }
     }
-    
 
     private String hashPassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");

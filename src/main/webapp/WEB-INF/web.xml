@@ -187,5 +187,14 @@
         <url-pattern>/SubmitQuestionServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>AddUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/adduser</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

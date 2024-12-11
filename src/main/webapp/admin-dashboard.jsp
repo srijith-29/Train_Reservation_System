@@ -55,6 +55,11 @@
 
         </div>
     </div>
+    
+    <form action="adduser.jsp" method="get" class="add-user-form">
+        <button type="submit" class="add-user-button">Add User</button>
+    </form>
+    
     <h1>Admin Dashboard</h1>
     <table border="1">
         <thead>

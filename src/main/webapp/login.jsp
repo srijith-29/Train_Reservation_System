@@ -45,7 +45,6 @@
             <input type="submit" value="Login">
         </form>
         <a href="signup" class="signup-link">Don't have an account? Sign up</a>
-        <a href="browse" class="signup-link">Browse Train Schedules</a>
     </div>
 </body>
 

@@ -18,7 +18,13 @@
             user-select: none; /* Prevent text selection */
             transition: background-color 0.2s;
         }
-
+        .heading-note {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-size: 16px;
+            color: #555;
+            font-style: italic;
+        }
         .results-table th:hover {
             background-color: #0056b3; /* Darker shade for hover */
         }
@@ -133,6 +139,10 @@
 <body>
     <div class="search-results-container">
         <h2>Search Results</h2>
+
+        <div class="heading-note">
+            Click on the column headings to sort results by the selected <strong>criteria</strong>.
+        </div>
 
         <!-- JSON Data for JavaScript -->
         <script>

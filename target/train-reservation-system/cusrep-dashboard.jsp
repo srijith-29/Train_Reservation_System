@@ -12,6 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/train-reservation-system/css/style.css">
 </head>
 <body>
     <h2>Welcome, <%= session.getAttribute("username") %>!</h2>
@@ -20,5 +21,15 @@
     <form action="logout" method="post">
         <input type="submit" value="Logout">
     </form>
+
+    <div class="form-group">
+        <a href="ScheduleManagementServlet" class="signup-link">Manage Train Schedules</a>
+    </div>
+    <div class="form-group">
+        <a href="UserReservationServlet" class="signup-link">Get Customer Report</a>
+    </div>
+    <div class="form-group">
+        <a href="ListQuestionsServlet" class="signup-link">Reply to Customer Questions</a>
+    </div>
 </body>
 </html>

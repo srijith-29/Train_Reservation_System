@@ -195,6 +195,21 @@
         <servlet-name>AddUserServlet</servlet-name>
         <url-pattern>/adduser</url-pattern>
     </servlet-mapping>
-
-
+    
+    <servlet>
+        <servlet-name>ScheduleManagementServlet</servlet-name>
+        <servlet-class>ScheduleManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScheduleManagementServlet</servlet-name>
+        <url-pattern>/ScheduleManagementServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UserReservationServlet</servlet-name>
+        <servlet-class>UserReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserReservationServlet</servlet-name>
+        <url-pattern>/UserReservationServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -1,6 +1,9 @@
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -21,10 +24,11 @@ public class AddUserServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
 
         try (Connection conn = DBHelper.getConnection()) {
+            String hashedPassword = hashPassword(password);
             String sql = "INSERT INTO Users (Username, Password, Role, Email, First_Name, Last_Name) VALUES (?, ?, ?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, username);
-                stmt.setString(2, password); // Note: You should hash the password before storing it.
+                stmt.setString(2, hashedPassword); // Note: You should hash the password before storing it.
                 stmt.setString(3, role);
                 stmt.setString(4, email);
                 stmt.setString(5, firstName);
@@ -44,5 +48,17 @@ public class AddUserServlet extends HttpServlet {
             e.printStackTrace(); // Log the error for debugging
             response.sendRedirect("adduser.jsp?error=An+unexpected+error+occurred");
         }
+    }
+
+        private String hashPassword(String password) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 }

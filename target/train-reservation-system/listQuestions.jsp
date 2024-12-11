@@ -6,7 +6,16 @@
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/train-reservation-system/css/listQuestions.css">
 </head>
 <body>
-    <button class="back-button" onclick="window.location.href='success.jsp'">Back</button>
+    <%
+        String role1 = (String) session.getAttribute("role");  // Retrieve the role from the session
+        String backUrl = "success.jsp";  // Default URL
+        if ("cusrep".equals(role1)) {
+            backUrl = "cusrep-dashboard.jsp";
+        }
+    %>
+
+    <button class="back-button" onclick="window.location.href='<%= backUrl %>';">Back</button>
+
 
     <!-- Form to submit a new question -->
     <h3>Ask a New Question</h3>

@@ -28,5 +28,8 @@
     <div class="form-group">
         <a href="UserReservationServlet" class="signup-link">Get Customer Report</a>
     </div>
+    <div class="form-group">
+        <a href="ListQuestionsServlet" class="signup-link">Reply to Customer Questions</a>
+    </div>
 </body>
 </html>

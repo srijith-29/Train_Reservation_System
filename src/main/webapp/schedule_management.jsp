@@ -34,6 +34,14 @@
             margin-right: 10px;
         }
 
+        .no-results {
+            text-align: center;
+            margin: 10px 0 20px;
+            font-size: 16px;
+            color: #555;
+            font-style: italic;
+        }
+
         form button {
             padding: 8px 20px;
             background-color: #007bff;
@@ -214,7 +222,7 @@
         </thead>
         <tbody>
             <% List<Map<String, Object>> schedules = (List<Map<String, Object>>) request.getAttribute("schedules");
-               if (schedules != null) {
+                if (schedules != null && !schedules.isEmpty()) {
                    for (Map<String, Object> schedule : schedules) { %>
                        <tr>
                            <td><%= schedule.get("scheduleId") %></td>
@@ -243,7 +251,7 @@
             <%     }
                } else { %>
                    <tr>
-                       <td colspan="10">No schedules found.</td>
+                    <td colspan="11" class="no-schedules">No schedules found.</td>
                    </tr>
             <% } %>
         </tbody>
